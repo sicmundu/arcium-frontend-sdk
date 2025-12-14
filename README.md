@@ -27,12 +27,15 @@ npm run build
 - `ARCIUM_CLUSTER_OFFSET` — **required**; keep per environment (dev/stage/prod) in `.env`.
 - `NEXT_PUBLIC_RPC_URL`/`RPC_URL` — optional RPC (defaults to devnet).
 - `NEXT_PUBLIC_MXE_PROGRAM_ID` — your program ID; the SDK never hardcodes it.
+- `POOL_ACCOUNT_PUBKEY` / `CLOCK_ACCOUNT_PUBKEY` — shared game accounts used across the sample frontends (defaults shown below; override via env if yours differ).
 
 `.env.example`:
 ```
 ARCIUM_CLUSTER_OFFSET=768109697
 NEXT_PUBLIC_RPC_URL=https://api.devnet.solana.com
 NEXT_PUBLIC_MXE_PROGRAM_ID=ReplaceWithProgramId
+POOL_ACCOUNT_PUBKEY=FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M
+CLOCK_ACCOUNT_PUBKEY=AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV
 ```
 
 ## Usage walkthrough
@@ -94,11 +97,11 @@ const budgetIxs = buildComputeBudgetIxs({ cuPriceMicro: 1000, cuLimit: 1_400_000
 
 Full example: `examples/derive-and-encode.ts`.
 
-### Frontend "battle" example (like front-end-arcium)
+### Frontend example (encrypted call with shared pool/clock)
 - Uses env (`ARCIUM_CLUSTER_OFFSET`, `NEXT_PUBLIC_MXE_PROGRAM_ID`) + wallet/provider.
 - Fetches MXE pubkey, encrypts warrior stats, derives PDAs, builds ix + compute budget, signs/sends tx.
-- Game accounts default to shared IDs: `POOL_ACCOUNT_PUBKEY=FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M`, `CLOCK_ACCOUNT_PUBKEY=AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV`; override via env if needed.
-See `examples/battle-frontend.ts` for a runnable sketch mirroring the game frontend.
+- Pool/clock accounts default to the shared IDs used across the existing frontends; override via env if your deployment differs.
+See `examples/battle-frontend.ts` for a runnable sketch mirroring the game frontend flow.
 
 ### Callback + verify_output example
 ```ts

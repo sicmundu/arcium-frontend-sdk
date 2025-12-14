@@ -8,7 +8,7 @@ import {
   encodeEncryptedCall,
   buildInstruction,
   buildComputeBudgetIxs,
-} from '../src';
+} from 'arcium-frontend-sdk';
 
 async function main() {
   const env = ensureEnvConfig();

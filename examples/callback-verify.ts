@@ -1,5 +1,5 @@
 // Example: handling SignedComputationOutputs in a callback and verifying
-import { verifySignedOutputs } from '../src/results';
+import { verifySignedOutputs } from 'arcium-frontend-sdk';
 
 // This mimics the shape returned by Arcium callbacks (must expose verify_output()).
 class MockSignedOutputs {

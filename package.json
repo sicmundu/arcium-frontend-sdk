@@ -1,0 +1,52 @@
+{
+  "name": "arcium-frontend-sdk",
+  "version": "0.1.0",
+  "description": "Universal Arcium frontend SDK for Solana (TypeScript): derive PDAs, encrypt inputs, build encrypted instructions, manage compute budgets, and verify SignedComputationOutputs.",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "echo \"Add your linter here\"",
+    "check": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@arcium-hq/client": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@coral-xyz/anchor": ">=0.32.1",
+    "@solana/web3.js": ">=1.98.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.18"
+  },
+  "keywords": [
+    "arcium",
+    "solana",
+    "frontend",
+    "sdk",
+    "typescript"
+  ],
+  "author": "sicmundus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sicmundu/arcium-frontend-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sicmundu/arcium-frontend-sdk/issues"
+  },
+  "homepage": "https://github.com/sicmundu/arcium-frontend-sdk#readme"
+}

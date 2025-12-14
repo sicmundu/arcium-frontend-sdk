@@ -94,6 +94,11 @@ const budgetIxs = buildComputeBudgetIxs({ cuPriceMicro: 1000, cuLimit: 1_400_000
 
 Full example: `examples/derive-and-encode.ts`.
 
+### Frontend "battle" example (like front-end-arcium)
+- Uses env (`ARCIUM_CLUSTER_OFFSET`, `NEXT_PUBLIC_MXE_PROGRAM_ID`) + wallet/provider.
+- Fetches MXE pubkey, encrypts warrior stats, derives PDAs, builds ix + compute budget, signs/sends tx.
+See `examples/battle-frontend.ts` for a runnable sketch mirroring the game frontend.
+
 ### Callback + verify_output example
 ```ts
 import { verifySignedOutputs, assertVerified } from 'arcium-frontend-sdk';

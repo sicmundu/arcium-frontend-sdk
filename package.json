@@ -41,6 +41,9 @@
   ],
   "author": "sicmundus",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sicmundu/arcium-frontend-sdk.git"

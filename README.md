@@ -1,6 +1,6 @@
 # Arcium Frontend SDK (universal)
 
-TypeScript utilities for Arcium v0.5.1+: PDA derivation, encrypted input preparation, encrypted instruction encoding, compute-budget/priority-fee helpers, and `SignedComputationOutputs` verification. No domain logic — transport and crypto only.
+TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDAs, encrypt user inputs, encode encrypted instructions, add compute/priority-fee helpers, and verify `SignedComputationOutputs`. Focused on crypto + transport helpers you can drop into any frontend.
 
 ## Features
 - v0.5.1-compatible PDAs (mxe, mempool, executing pool, computation, cluster, comp_def).

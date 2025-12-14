@@ -1,7 +1,7 @@
 {
   "name": "arcium-frontend-sdk",
   "version": "0.1.2",
-  "description": "Universal Arcium frontend SDK for Solana (TypeScript): derive PDAs, encrypt inputs, build encrypted instructions, manage compute budgets, and verify SignedComputationOutputs.",
+  "description": "TypeScript SDK for encrypted Solana apps with Arcium: derive PDAs, encrypt user inputs, build encrypted instructions, manage compute/priority fees, and verify SignedComputationOutputs.",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

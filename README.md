@@ -119,13 +119,6 @@ See `examples/callback-verify.ts` for a runnable mock.
 - `transactions/compute`: `encodeEncryptedCall`, `buildInstruction`, `buildComputeBudgetIxs`, `buildTransaction`.
 - `results`: `verifySignedOutputs`, `assertVerified`.
 
-## Migration v0.4 → v0.5.1 (frontend)
-- Env: `ARCIUM_CLUSTER_PUBKEY` → `ARCIUM_CLUSTER_OFFSET`.
-- TS: `getArciumProgAddress` → `getArciumProgramId`; `getExecutingPoolAccData` → `getExecutingPoolAccInfo`; `mxeProgramID` → `mxeProgramId`.
-- PDAs: mempool/executing/computation/cluster use `arciumClusterOffset` (not `program.programId`).
-- queue_computation: new `cu_price_micro` (priority fee).
-- Callbacks: `SignedComputationOutputs` + required accounts `mxe_account`, `computation_account`, `cluster_account`.
-
 ## Roadmap / Ideas
 - Add lint/format scripts and CI.
 - Real MXE public key retrieval example with `@arcium-hq/client`.

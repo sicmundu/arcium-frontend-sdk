@@ -97,6 +97,7 @@ Full example: `examples/derive-and-encode.ts`.
 ### Frontend "battle" example (like front-end-arcium)
 - Uses env (`ARCIUM_CLUSTER_OFFSET`, `NEXT_PUBLIC_MXE_PROGRAM_ID`) + wallet/provider.
 - Fetches MXE pubkey, encrypts warrior stats, derives PDAs, builds ix + compute budget, signs/sends tx.
+- Game accounts default to shared IDs: `POOL_ACCOUNT_PUBKEY=FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M`, `CLOCK_ACCOUNT_PUBKEY=AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV`; override via env if needed.
 See `examples/battle-frontend.ts` for a runnable sketch mirroring the game frontend.
 
 ### Callback + verify_output example

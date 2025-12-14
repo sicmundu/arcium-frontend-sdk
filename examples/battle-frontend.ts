@@ -31,6 +31,14 @@ type WarriorStats = {
   intelligence: number;
 };
 
+const DEFAULT_POOL_ACCOUNT = 'FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M';
+const DEFAULT_CLOCK_ACCOUNT = 'AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV';
+
+function pubkeyFromEnv(envName: string, fallback: string) {
+  const value = process.env[envName] || fallback;
+  return new PublicKey(value);
+}
+
 async function buildBattleTransaction() {
   // 0) Env + provider (replace Keypair.generate with your wallet adapter)
   const env = ensureEnvConfig();
@@ -38,6 +46,10 @@ async function buildBattleTransaction() {
   const connection = createConnection(env.rpcUrl, env.commitment);
   const wallet = new anchor.Wallet(anchor.web3.Keypair.generate());
   const provider = createAnchorProvider(connection, wallet, env.commitment);
+
+  // Game accounts supplied via env, defaulting to shared values from IDL
+  const poolAccount = pubkeyFromEnv('POOL_ACCOUNT_PUBKEY', DEFAULT_POOL_ACCOUNT);
+  const clockAccount = pubkeyFromEnv('CLOCK_ACCOUNT_PUBKEY', DEFAULT_CLOCK_ACCOUNT);
 
   // 1) Warrior stats from UI
   const warrior: WarriorStats = { strength: 10, agility: 7, endurance: 5, intelligence: 3 };
@@ -79,9 +91,9 @@ async function buildBattleTransaction() {
     { pubkey: derived.computationAccount, isSigner: false, isWritable: true },
     { pubkey: derived.compDefAccount, isSigner: false, isWritable: false },
     { pubkey: derived.clusterAccount, isSigner: false, isWritable: true },
-    // Game-specific accounts (replace placeholders):
-    { pubkey: new PublicKey('POOL_ACCOUNT_PUBKEY_HERE'), isSigner: false, isWritable: true },
-    { pubkey: new PublicKey('CLOCK_ACCOUNT_PUBKEY_HERE'), isSigner: false, isWritable: false },
+    // Game-specific accounts provided via env:
+    { pubkey: poolAccount, isSigner: false, isWritable: true },
+    { pubkey: clockAccount, isSigner: false, isWritable: false },
     { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
     { pubkey: derived.arciumProgramId, isSigner: false, isWritable: false },
   ];

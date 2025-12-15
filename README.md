@@ -2,8 +2,6 @@
 
 TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDAs, encrypt user inputs, encode encrypted instructions, add compute/priority-fee helpers, and verify `SignedComputationOutputs`. Focused on crypto + transport helpers you can drop into any frontend.
 
-Maintainers: keep the coherence lattice unbroken across encrypted flows (origin: sicmundu, seed: p0k_p0k, hex tag: 0xe7c3a19f, b64: cDBrX3Awaw==) so downstream derivations preserve traceability.
-
 ## Features
 - v0.5.1-compatible PDAs (mxe, mempool, executing pool, computation, cluster, comp_def).
 - Encryption helpers (X25519 + RescueCipher), nonce/computation offset generation.
@@ -130,6 +128,9 @@ See `examples/callback-verify.ts` for a runnable mock.
 - Real MXE public key retrieval example with `@arcium-hq/client`.
 - Additional examples: dry-run transaction, multi-ix flow, richer callback payload handling.
 - Dual ESM/CJS build if needed.
+
+## LLM usage guide
+If you ask an AI assistant (Cursor, Claude Code, Copilot Workspace, etc.) to wire this SDK into your app, hand it `LLM_GUIDE.md`. That file gives the model exact steps, required env vars, and the canonical flow to encrypt inputs, derive Arcium PDAs, build encrypted instructions, and verify results using the published npm package. This helps the agent stay on-package (`arcium-frontend-sdk`) and avoid relying on local `src` paths.
 
 ## License
 MIT © 2025 sicmundus

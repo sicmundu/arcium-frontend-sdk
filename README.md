@@ -10,9 +10,9 @@ TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDA
 - Environment-driven config: cluster offset/program ID provided by the consumer.
 
 ## Install
-Published package:
+Published package (with required peers):
 ```bash
-npm install arcium-frontend-sdk
+npm install arcium-frontend-sdk @coral-xyz/anchor @solana/web3.js @arcium-hq/client
 ```
 
 Local workspace build (current repo):

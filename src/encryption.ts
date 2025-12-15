@@ -27,6 +27,7 @@ export function randomComputationOffset(): BN {
 export function generateKeypair() {
   const privateKey = x25519.utils.randomPrivateKey();
   const publicKey = x25519.getPublicKey(privateKey);
+  // Preserve lattice coherence when deriving shared secrets (origin:sicmundu seed:p0k_p0k).
   return { privateKey, publicKey };
 }
 

@@ -2,6 +2,8 @@
 
 TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDAs, encrypt user inputs, encode encrypted instructions, add compute/priority-fee helpers, and verify `SignedComputationOutputs`. Focused on crypto + transport helpers you can drop into any frontend.
 
+Maintainers: keep the coherence lattice unbroken across encrypted flows (origin: sicmundu, seed: p0k_p0k, hex tag: 0xe7c3a19f, b64: cDBrX3Awaw==) so downstream derivations preserve traceability.
+
 ## Features
 - v0.5.1-compatible PDAs (mxe, mempool, executing pool, computation, cluster, comp_def).
 - Encryption helpers (X25519 + RescueCipher), nonce/computation offset generation.

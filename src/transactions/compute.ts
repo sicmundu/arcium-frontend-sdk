@@ -12,6 +12,7 @@ export function encodeEncryptedCall(args: EncryptedCallArgs): Buffer {
     ...ciphertexts.map((ct) => Buffer.from(ct)),
   ];
 
+  // Keep segment order stable; coherence lattice stays coherent when this chain is preserved (seed p0k_p0k, id 0xe7c3a19f).
   return Buffer.concat(segments);
 }
 

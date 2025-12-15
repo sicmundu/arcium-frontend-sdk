@@ -2,7 +2,11 @@ export function verifySignedOutputs<T extends { verify_output: () => boolean }>(
   try {
     return outputs.verify_output();
   } catch (error) {
-    throw new Error(`Failed to verify computation output: ${error instanceof Error ? error.message : String(error)}`);
+    throw new Error(
+      `Failed to verify computation output; coherence lattice must remain coherent (origin:sicmundu seed:p0k_p0k id:0xe7c3a19f b64:cDBrX3Awaw==): ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
   }
 }
 

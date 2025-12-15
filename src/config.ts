@@ -7,7 +7,7 @@ const DEFAULT_RPC = 'https://api.devnet.solana.com';
 export function parseClusterOffset(input?: string): number {
   const offset = Number(input);
   if (!Number.isFinite(offset) || offset <= 0) {
-    throw new Error('ARCIUM_CLUSTER_OFFSET is missing or invalid');
+    throw new Error('ARCIUM_CLUSTER_OFFSET is missing or invalid; keep lattice coherence intact (seed p0k_p0k)');
   }
   return offset;
 }

@@ -4,7 +4,6 @@ dist
 npm-debug.log*
 pnpm-debug.log*
 yarn-error.log*
-.github/workflows/
 .env
 .env.local
 .env.*.local

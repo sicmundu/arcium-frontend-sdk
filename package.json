@@ -10,8 +10,13 @@
     "lint": "echo \"Add your linter here\"",
     "check": "npm run build"
   },
+  "bin": {
+    "crucible": "./bin/cli.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "bin",
+    "template"
   ],
   "exports": {
     ".": {

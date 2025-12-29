@@ -9,6 +9,14 @@ TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDA
 - Output verification helpers for `SignedComputationOutputs` (`verify_output`).
 - Environment-driven config: cluster offset/program ID provided by the consumer.
 
+## Quick Start
+Scaffold a new terminal-styled Arcium app with built-in Solana wallet support:
+```bash
+npx crucible init <project-name>
+# or
+crucible init <project-name>
+```
+
 ## Install
 Published package (with required peers):
 ```bash

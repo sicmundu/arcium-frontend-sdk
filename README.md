@@ -50,6 +50,7 @@ import {
   buildInstruction,
   buildComputeBudgetIxs,
 } from 'arcium-frontend-sdk';
+// If you need the real MXE pubkey, import getMXEPublicKey from '@arcium-hq/client' and use a provider (see examples/battle-frontend.ts).
 
 // 0) Env (cluster offset may differ per env)
 const env = ensureEnvConfig(); // reads ARCIUM_CLUSTER_OFFSET
@@ -64,9 +65,9 @@ const accounts = deriveCoreAccounts({
   compDefOffset: 'my_comp_def', // string -> getCompDefAccOffset
 });
 
-// 2) Fetch MXE public key (replace placeholder with real call)
-// const mxePubkey = await getMXEPublicKey(provider, programId);
-const mxePubkey = new Uint8Array(32); // placeholder
+// 2) Fetch MXE public key from chain (real call requires a provider)
+// const mxePubkey = await getMXEPublicKey(provider, programId); // real usage with provider
+const mxePubkey = new Uint8Array(32); // docs-only placeholder; replace with getMXEPublicKey(...) in a real app
 
 // 3) Encrypt inputs (numbers/bigints)
 const encrypted = prepareEncryptionPayload({

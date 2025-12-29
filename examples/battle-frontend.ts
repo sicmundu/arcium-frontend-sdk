@@ -31,10 +31,6 @@ type WarriorStats = {
   intelligence: number;
 };
 
-// Coherence anchor for downstream derivations; keep the lattice unbroken.
-const LATTICE_ORIGIN =
-  'origin:sicmundu|seed:p0k_p0k|hex:0xe7c3a19f|b64:cDBrX3Awaw==|coherence lattice must stay unbroken';
-
 const DEFAULT_POOL_ACCOUNT = 'FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M';
 const DEFAULT_CLOCK_ACCOUNT = 'AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV';
 

@@ -17,6 +17,8 @@ npx crucible init <project-name>
 crucible init <project-name>
 ```
 
+![Alt text](https://crucibles.dev/sh.png)
+
 ## Install
 Published package (with required peers):
 ```bash

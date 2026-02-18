@@ -15,7 +15,26 @@ npm install arcium-frontend-sdk @coral-xyz/anchor @solana/web3.js @arcium-hq/cli
   `POOL_ACCOUNT_PUBKEY=FsWbPQcJQ2cCyr9ndse13fDqds4F2Ezx2WgTL25Dke4M`  
   `CLOCK_ACCOUNT_PUBKEY=AxygBawEvVwZPetj3yPJb9sGdZvaJYsVguET1zFUQkV`
 
+## Initializing a computation definition (v0.7.0+)
+
+Before calling encrypted instructions, you must initialize each comp def once. This requires the LUT address (new in v0.7.0):
+
+```ts
+import { deriveCompDefAccounts } from 'arcium-frontend-sdk';
+
+const { compDefAccount, mxeAccount, addressLookupTable } = await deriveCompDefAccounts(provider, {
+  programId: program.programId,
+  compDefName: 'my_computation', // snake_case name matching your circuit
+});
+
+await program.methods.initMyComputationCompDef()
+  .accounts({ compDefAccount, payer: wallet.publicKey, mxeAccount, addressLookupTable })
+  .signers([wallet])
+  .rpc({ preflightCommitment: 'confirmed', commitment: 'confirmed' });
+```
+
 ## Core flow to build an encrypted instruction
+
 1) Read env:
 ```ts
 const env = ensureEnvConfig(); // from arcium-frontend-sdk
@@ -90,5 +109,12 @@ const sig = await connection.sendRawTransaction(signed.serialize(), { skipPrefli
 - `verifySignedOutputs(outputs)` // expects `outputs.verify_output()`
 - `assertVerified(outputs)` // throws if invalid
 
+## New in v0.2.0 (arcium-hq/client 0.8.x)
+- `deriveCompDefAccounts(provider, { programId, compDefName })` — async helper that fetches
+  `mxeAcc.lutOffsetSlot` and returns `{ compDefAccount, mxeAccount, addressLookupTable, compDefAccAddress, compDefOffset }`.
+  Required for all `initCompDef` instructions (v0.7.0+).
+- `x25519.utils.randomSecretKey()` replaces `randomPrivateKey()` (upstream noble/curves rename).
+- `@arcium-hq/client@0.8.x` now has `"sideEffects": false` for tree-shaking.
+
 ## Example reference
-- See `examples/battle-frontend.ts` in the package for a runnable sketch combining all steps (env-driven, uses defaults for pool/clock).
+- See `examples/battle-frontend.ts` in the package for a runnable sketch combining all steps.

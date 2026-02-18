@@ -24,6 +24,26 @@ export interface DerivedAccounts {
   compDefAccount: PublicKey;
 }
 
+/**
+ * Accounts needed for initCompDef instructions (v0.7.0+).
+ * Includes the LUT address derived from the MXE account's lutOffsetSlot.
+ */
+export interface DerivedCompDefAccounts {
+  /** The comp def PDA (same as compDefAccount in DerivedAccounts). */
+  compDefAccount: PublicKey;
+  /** The MXE account PDA. */
+  mxeAccount: PublicKey;
+  /** Address Lookup Table account derived from mxeAcc.lutOffsetSlot (required since v0.7.0). */
+  addressLookupTable: PublicKey;
+  /**
+   * Same PDA as compDefAccount, but derived via getCompDefAccAddress for use in
+   * .accountsPartial() when calling queue_computation instructions.
+   */
+  compDefAccAddress: PublicKey;
+  /** Numeric offset (uint32 LE) for use with getCompDefAccAddress. */
+  compDefOffset: number;
+}
+
 export interface PreparedEncryption {
   sharedSecret: Uint8Array;
   encryptionPubkey: Uint8Array;

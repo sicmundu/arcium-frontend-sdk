@@ -17,6 +17,7 @@ import {
   createAnchorProvider,
   randomComputationOffset,
   deriveCoreAccounts,
+  deriveCompDefAccounts,
   prepareEncryptionPayload,
   encodeEncryptedCall,
   buildInstruction,
@@ -39,6 +40,28 @@ function pubkeyFromEnv(envName: string, fallback: string) {
   return new PublicKey(value);
 }
 
+async function initBattleCompDef(
+  provider: anchor.AnchorProvider,
+  programId: PublicKey,
+  program: anchor.Program
+): Promise<void> {
+  // v0.7.0+: use deriveCompDefAccounts to get LUT address
+  const { compDefAccount, mxeAccount, addressLookupTable } = await deriveCompDefAccounts(
+    provider,
+    { programId, compDefName: 'battle_warrior' }
+  );
+
+  await program.methods
+    .initBattleWarriorCompDef()
+    .accounts({
+      compDefAccount,
+      payer: provider.wallet.publicKey,
+      mxeAccount,
+      addressLookupTable,
+    })
+    .rpc({ preflightCommitment: 'confirmed', commitment: 'confirmed' });
+}
+
 async function buildBattleTransaction() {
   // 0) Env + provider (replace Keypair.generate with your wallet adapter)
   const env = ensureEnvConfig();
@@ -56,6 +79,7 @@ async function buildBattleTransaction() {
 
   // 2) Fetch MXE public key from chain
   const mxePublicKey = await getMXEPublicKey(provider, programId);
+  if (!mxePublicKey) throw new Error('MXE public key not found — is the MXE initialized?');
 
   // 3) Encrypt stats (X25519 + RescueCipher) and pick computation offset
   const computationOffset = randomComputationOffset();
@@ -69,7 +93,7 @@ async function buildBattleTransaction() {
     programId,
     clusterOffset: env.clusterOffset,
     computationOffset,
-    compDefOffset: 'battle_warrior', // or your comp_def offset string/bytes
+    compDefOffset: 'battle_warrior',
   });
 
   // 5) Build ix data (use your IDL discriminator)
@@ -110,7 +134,7 @@ async function buildBattleTransaction() {
   const signed = await wallet.signTransaction(tx);
   // send with your RPC preferences
   const sig = await connection.sendRawTransaction(signed.serialize(), { skipPreflight: true });
-  console.log('Battle tx signature:', sig, '| lattice anchor:', LATTICE_ORIGIN);
+  console.log('Battle tx signature:', sig);
 }
 
 buildBattleTransaction().catch((err) => {

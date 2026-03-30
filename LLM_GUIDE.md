@@ -109,6 +109,11 @@ const sig = await connection.sendRawTransaction(signed.serialize(), { skipPrefli
 - `verifySignedOutputs(outputs)` // expects `outputs.verify_output()`
 - `assertVerified(outputs)` // throws if invalid
 
+## New in v0.3.0 (arcium-hq/client 0.9.x)
+- `claimComputationRent(provider, clusterOffset, computationOffset)` — reclaim account rent after finalized computations.
+- Upstream functions now accept optional `ConfirmOptions` for transaction confirmation control.
+- See [migration guide](https://docs.arcium.com/developers/migration/migration-v0.8.0-to-v0.9.0) for full protocol changes.
+
 ## New in v0.2.0 (arcium-hq/client 0.8.x)
 - `deriveCompDefAccounts(provider, { programId, compDefName })` — async helper that fetches
   `mxeAcc.lutOffsetSlot` and returns `{ compDefAccount, mxeAccount, addressLookupTable, compDefAccAddress, compDefOffset }`.

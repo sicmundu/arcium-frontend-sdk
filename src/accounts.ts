@@ -12,6 +12,7 @@ import {
   getLookupTableAddress,
   getArciumProgram,
   getCompDefAccAddress,
+  claimComputationRent,
 } from '@arcium-hq/client';
 import type { DerivedAccounts, DerivedCompDefAccounts, BN } from './types';
 
@@ -113,3 +114,5 @@ export async function deriveCompDefAccounts(
     compDefOffset,
   };
 }
+
+export { claimComputationRent };

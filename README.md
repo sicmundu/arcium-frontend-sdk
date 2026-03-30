@@ -2,7 +2,7 @@
 
 TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDAs, encrypt user inputs, encode encrypted instructions, add compute/priority-fee helpers, and verify `SignedComputationOutputs`. Focused on crypto + transport helpers you can drop into any frontend.
 
-Compatible with **`@arcium-hq/client` v0.8.x** (Arcium protocol v0.8.0).
+Compatible with **`@arcium-hq/client` v0.9.x** (Arcium protocol v0.9.0).
 
 ## Features
 - PDAs: mxe, mempool, executing pool, computation, cluster, comp_def.
@@ -155,12 +155,18 @@ See `examples/callback-verify.ts`.
 | Module | Exports |
 |---|---|
 | `config` | `ensureEnvConfig`, `loadEnvConfig`, `createConnection`, `createAnchorProvider`, `toArciumEnv` |
-| `accounts` | `deriveCoreAccounts`, `deriveCompDefAccounts`, `toBuffer` |
+| `accounts` | `deriveCoreAccounts`, `deriveCompDefAccounts`, `claimComputationRent`, `toBuffer` |
 | `encryption` | `prepareEncryptionPayload`, `randomComputationOffset`, `randomNonce`, `generateKeypair`, `deriveSharedSecret`, `encryptBigints`, `buildEncryptedArgs` |
 | `transactions/compute` | `encodeEncryptedCall`, `buildInstruction`, `buildComputeBudgetIxs`, `buildTransaction` |
 | `results` | `verifySignedOutputs`, `assertVerified` |
 
 ## Changelog
+
+### v0.3.0
+- Updated `@arcium-hq/client` dependency to `^0.9.3` (supports Arcium protocol v0.9.0).
+- **New re-export:** `claimComputationRent(provider, clusterOffset, computationOffset)` — reclaim Solana account rent after a computation reaches `Finalized` status.
+- Upstream `@arcium-hq/client` 0.9.x functions (`uploadCircuit`, `initMxePart1`, `initMxePart2`, `recoverMxe`, `initKeyRecoveryExecution`, `submitKeyRecoveryShare`, `finalizeKeyRecoveryExecution`) now accept an optional `confirmOptions` parameter (`ConfirmOptions` from `@solana/web3.js`).
+- See [migration guide](https://docs.arcium.com/developers/migration/migration-v0.8.0-to-v0.9.0) for full Arcium v0.9.0 changes.
 
 ### v0.2.0
 - Updated `@arcium-hq/client` dependency to `^0.8.4` (supports Arcium protocol v0.8.0).

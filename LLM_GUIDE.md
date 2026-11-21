@@ -1,10 +1,13 @@
 # LLM integration guide for `arcium-frontend-sdk`
 
-You are an LLM asked to wire encrypted Solana flows using the npm package `arcium-frontend-sdk`. Follow this checklist and use only the published package (no local `../src` imports).
+This guide covers SDK **0.3.0** from GitHub main (`@arcium-hq/client` 0.9.x). For the published npm **0.2.0** release (`@arcium-hq/client` 0.8.x), use the [0.2.0 integration guide](https://github.com/sicmundu/arcium-frontend-sdk/blob/793d566985e6252719ff199b57fa431695ccf6bb/LLM_GUIDE.md).
 
 ## Install (project side)
+
+For the 0.3.0 examples below, [build this repository from source](README.md#install) and install the built SDK into your app. Use the package entry point in application code, not relative imports from `src`:
+
 ```bash
-npm install arcium-frontend-sdk @coral-xyz/anchor @solana/web3.js @arcium-hq/client
+npm install /path/to/arcium-frontend-sdk "@arcium-hq/client@^0.9.3" "@coral-xyz/anchor@^0.32.1" "@solana/web3.js@^1.98.4"
 ```
 
 ## Required environment

@@ -2,7 +2,7 @@
 
 TypeScript SDK for building encrypted Solana apps with Arcium: derive Arcium PDAs, encrypt user inputs, encode encrypted instructions, add compute/priority-fee helpers, and verify `SignedComputationOutputs`. Focused on crypto + transport helpers you can drop into any frontend.
 
-Compatible with **`@arcium-hq/client` v0.9.x** (Arcium protocol v0.9.0).
+> **Version note:** This branch documents SDK **0.3.0** with Arcium client **0.9.x**. npm **0.2.0** uses Arcium client **0.8.x**; see the [0.2.0 integration guide](https://github.com/sicmundu/arcium-frontend-sdk/blob/793d566985e6252719ff199b57fa431695ccf6bb/LLM_GUIDE.md) for the published release.
 
 ## Features
 - PDAs: mxe, mempool, executing pool, computation, cluster, comp_def.
@@ -13,28 +13,29 @@ Compatible with **`@arcium-hq/client` v0.9.x** (Arcium protocol v0.9.0).
 - Environment-driven config: cluster offset/program ID provided by the consumer.
 
 ## Quick Start
-Scaffold a new terminal-styled Arcium app with built-in Solana wallet support:
+Scaffold a new terminal-styled Arcium app with built-in Solana wallet support using the npm 0.2.0 release:
+
 ```bash
-npx crucible init <project-name>
-# or
-crucible init <project-name>
+npx --package=arcium-frontend-sdk@0.2.0 crucible init my-app
 ```
 
-![Alt text](https://crucibles.dev/sh.png)
+`crucible` is the executable provided by `arcium-frontend-sdk`, not the package name.
 
 ## Install
-Published package (with required peers):
+To install the published 0.2.0 SDK in an existing app:
+
 ```bash
-npm install arcium-frontend-sdk @coral-xyz/anchor @solana/web3.js @arcium-hq/client
+npm install arcium-frontend-sdk@0.2.0 "@arcium-hq/client@^0.8.4" "@coral-xyz/anchor@^0.32.1" "@solana/web3.js@^1.98.4"
 ```
 
-Local workspace build (current repo):
+To build the 0.3.0 source, run these commands from this repository’s root:
+
 ```bash
-cd arcium-sdk
 npm install
 npm run build
 ```
-> Requires Node 20.18+.
+
+Requires Node.js 20.18 or newer.
 
 ## Environment
 - `ARCIUM_CLUSTER_OFFSET` — **required**; keep per environment (dev/stage/prod) in `.env`.
@@ -178,7 +179,7 @@ See `examples/callback-verify.ts`.
 - Initial public release with `@arcium-hq/client@0.5.x` support.
 
 ## LLM usage guide
-If you ask an AI assistant (Cursor, Claude Code, Copilot Workspace, etc.) to wire this SDK into your app, hand it `LLM_GUIDE.md`. That file gives the model exact steps, required env vars, and the canonical flow to encrypt inputs, derive Arcium PDAs, build encrypted instructions, and verify results using the published npm package.
+Give your coding assistant the guide that matches your SDK: [GitHub main (0.3.0)](LLM_GUIDE.md) or [npm 0.2.0](https://github.com/sicmundu/arcium-frontend-sdk/blob/793d566985e6252719ff199b57fa431695ccf6bb/LLM_GUIDE.md).
 
 ## License
 MIT © 2025 sicmundus
